@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "garage-imperio"
+version = "1.0.0"
+description = "Garage -> Imperio: juego educativo 2D sobre liderazgo, poder, gestion de proyectos y teoria de juegos"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["pygame-ce>=2.5"]
+
+[project.scripts]
+liderar = "liderar.__main__:main"
+
+[tool.setuptools]
+packages = ["liderar", "liderar.ui"]
