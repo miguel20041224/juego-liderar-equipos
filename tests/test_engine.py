@@ -188,7 +188,7 @@ class GameTheoryTests(unittest.TestCase):
 
     def test_play_round(self):
         s = GameState(cash=0)
-        scene = {"ai": "greedy", "payoffs": PRISONERS,
+        scene = {"strategy": "greedy", "payoffs": PRISONERS,
                  "effects_per_point": {"cash": 1000}}
         res = play_round(s, scene, 0, None)      # yo coopero, rival traiciona
         self.assertEqual(res["rival_move"], 1)
@@ -201,7 +201,7 @@ class GameTheoryTests(unittest.TestCase):
     def test_play_round_ignores_style(self):
         s = GameState(cash=0)
         s.set_style("transaccional")
-        scene = {"ai": "tit_for_tat", "payoffs": PRISONERS,
+        scene = {"strategy": "tit_for_tat", "payoffs": PRISONERS,
                  "effects_per_point": {"cash": 1000}}
         res = play_round(s, scene, 0, None)      # ambos cooperan: 3 pts
         self.assertEqual(res["my_points"], 3)

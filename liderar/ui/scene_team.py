@@ -74,7 +74,10 @@ class LeaderScreen(Screen):
             panel(surf, r, PANEL2 if (sel or hov) else PANEL, ACCENT if sel else LINE, 14, 3 if sel else 1)
             pygame.draw.circle(surf, ACCENT, (r.x + 24, r.y + 26), 14)
             text(surf, str(i + 1), font(19, True), (10, 14, 24), (r.x + 24, r.y + 26), "center")
-            text(surf, st["name"], font(23, True), TEXT, (r.x + 46, r.y + 14))
+            size = 23
+            while size > 16 and font(size, True).size(st["name"])[0] > r.w - 56:
+                size -= 1
+            text(surf, st["name"], font(size, True), TEXT, (r.x + 46, r.y + 14 + (23 - size) // 2))
             y = draw_lines(surf, wrap(font(17), st["desc"], r.w - 28), font(17), MUTED, r.x + 14, r.y + 56)
             y += 8
             for stat, m in st["mods"].items():

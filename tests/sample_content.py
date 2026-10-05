@@ -43,7 +43,7 @@ CHAPTERS = [
      "lesson": "Dilema del prisionero: cooperar es mejor en conjunto, pero competir tienta.",
      "scenes": [
          {"type": "matrix", "text": "Macrosoft y tú fijan precios a la vez.", "rival": "Macrosoft",
-          "rounds": 3, "ai": "tit_for_tat", "options": ["Mantener precio", "Bajar precio"],
+          "rounds": 3, "strategy": "tit_for_tat", "options": ["Mantener precio", "Bajar precio"],
           "payoffs": [[[3, 3], [0, 5]], [[5, 0], [1, 1]]],
           "effects_per_point": {"cash": 4000, "reputation": 1},
           "explain": "El equilibrio de Nash es (Bajar, Bajar), aunque (Mantener, Mantener) sería mejor "

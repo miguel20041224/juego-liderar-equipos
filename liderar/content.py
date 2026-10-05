@@ -330,7 +330,7 @@ CHAPTERS.append({
         {"type": "matrix",
          "text": "Ronda de precios contra Macrosoft. Si ambos mantienen, ganan bien; si uno baja solo, "
                  "se lleva el mercado. Si ambos bajan, los márgenes se destruyen.",
-         "rival": "Macrosoft", "rounds": 3, "ai": "tit_for_tat",
+         "rival": "Macrosoft", "rounds": 3, "strategy": "tit_for_tat",
          "options": ["Mantener precio", "Bajar precio"],
          "payoffs": [[[3, 3], [0, 5]], [[5, 0], [1, 1]]],
          "effects_per_point": {"cash": 1500, "reputation": 1},
@@ -351,7 +351,7 @@ CHAPTERS.append({
         {"type": "matrix",
          "text": "Alianza de estándares: pueden compartir sus conectores (Compartir) o cerrarlos "
                  "(Cerrar). Macrosoft usa una estrategia 'grim': si traicionas una vez, nunca perdona.",
-         "rival": "Macrosoft", "rounds": 3, "ai": "grim",
+         "rival": "Macrosoft", "rounds": 3, "strategy": "grim",
          "options": ["Compartir estándar", "Cerrar estándar"],
          "payoffs": [[[4, 4], [0, 5]], [[5, 0], [1, 1]]],
          "effects_per_point": {"cash": 1200, "innovation": 1, "reputation": 1},
@@ -496,7 +496,7 @@ CHAPTERS.append({
          "text": "Negociación con Mosk: elijan entre una alianza abierta (Colaborar) o proteger su "
                  "tecnología (Proteger). Coordinarse en Colaborar rinde más a largo plazo. Mosk es "
                  "impredecible.",
-         "rival": "Elon Mosk", "rounds": 3, "ai": "random",
+         "rival": "Elon Mosk", "rounds": 3, "strategy": "random",
          "options": ["Colaborar", "Proteger tecnología"],
          "payoffs": [[[5, 5], [1, 3]], [[3, 1], [2, 2]]],
          "effects_per_point": {"cash": 1800, "innovation": 1, "reputation": 1},

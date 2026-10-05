@@ -1,4 +1,4 @@
-"""Motor del juego: estado, efectos, condiciones, IA rival y finales.
+"""Motor del juego: estado, efectos, condiciones, rival y finales.
 
 No depende de pygame, así se puede probar sin ventana.
 
@@ -39,7 +39,7 @@ Tipos de escena (clave "type"):
 
   "matrix" -> juego simultáneo contra el rival (teoría de juegos)
       {"type": "matrix", "text": "...", "rival": "Macrosoft", "rounds": 3,
-       "ai": "tit_for_tat" | "greedy" | "random" | "grim",
+       "strategy": "tit_for_tat" | "greedy" | "random" | "grim",
        "options": ["Mantener precio", "Bajar precio"],   # índice 0 = cooperar, 1 = competir
        "payoffs": [[[3, 3], [0, 5]],                     # payoffs[mi][rival] = [yo, rival]
                    [[5, 0], [1, 1]]],
@@ -134,7 +134,7 @@ class Rival:
     cash: int = 80_000
     reputation: int = 40
     last_move: int = 0          # última jugada del rival en una matriz
-    betrayed: bool = False      # para la IA "grim"
+    betrayed: bool = False      # para la estrategia "grim"
 
 
 @dataclass
@@ -264,14 +264,14 @@ class GameState:
 
 
 # ---------- teoría de juegos ----------
-def rival_move(ai: str, my_last: int | None, rival: Rival, rng=None) -> int:
+def rival_move(strategy: str, my_last: int | None, rival: Rival, rng=None) -> int:
     """Devuelve 0 (cooperar) o 1 (competir) según la estrategia del rival."""
     rng = rng or random
-    if ai == "greedy":
+    if strategy == "greedy":
         return 1
-    if ai == "random":
+    if strategy == "random":
         return rng.randint(0, 1)
-    if ai == "grim":
+    if strategy == "grim":
         if my_last == 1:
             rival.betrayed = True
         return 1 if rival.betrayed else 0
@@ -297,7 +297,7 @@ def play_round(state: GameState, scene: dict, my_move: int, my_last: int | None,
     """Resuelve una ronda de matriz y aplica efectos. Devuelve el detalle."""
     if my_last is None:
         state.rival.betrayed = False  # cada matriz es un juego nuevo
-    their = rival_move(scene.get("ai", "tit_for_tat"), my_last, state.rival, rng)
+    their = rival_move(scene.get("strategy", "tit_for_tat"), my_last, state.rival, rng)
     mine_pts, their_pts = scene["payoffs"][my_move][their]
     per = scene.get("effects_per_point", {"cash": 3000})
     changes = state.apply({k: v * mine_pts for k, v in per.items()}, scale_by_style=False)
