@@ -39,18 +39,17 @@ Requisitos:
 
 - **Python 3.10+**
 - **Git**
-- **[GitHub CLI](https://cli.github.com/)** con la sesión iniciada (`gh auth login`), porque el repositorio es privado.
 
 **Linux / macOS**
 
 ```bash
-gh repo clone miguel20041224/juego-liderar-equipos && cd juego-liderar-equipos && ./install.sh
+git clone https://github.com/miguel20041224/juego-liderar-equipos.git && cd juego-liderar-equipos && ./install.sh
 ```
 
 **Windows (CMD)**
 
 ```bat
-gh repo clone miguel20041224/juego-liderar-equipos && cd juego-liderar-equipos && install.bat
+git clone https://github.com/miguel20041224/juego-liderar-equipos.git && cd juego-liderar-equipos && install.bat
 ```
 
 El instalador hace cuatro cosas:
@@ -67,15 +66,11 @@ El instalador hace cuatro cosas:
 | Ejecutar manualmente | `.venv/bin/python -m liderar` | `.venv\Scripts\python -m liderar` |
 
 <details>
-<summary>Instalación sin GitHub CLI</summary>
+<summary>Instalación sin Git</summary>
 
-```bash
-git clone https://github.com/miguel20041224/juego-liderar-equipos.git
-cd juego-liderar-equipos
-./install.sh        # o install.bat en Windows
-```
-
-Git pedirá el usuario y un *personal access token* con acceso al repositorio.
+1. Descarga el ZIP desde **Code → Download ZIP** y descomprímelo.
+2. Abre una terminal en la carpeta del juego.
+3. Ejecuta `./install.sh` (Linux/macOS) o `install.bat` (Windows).
 </details>
 
 ---
